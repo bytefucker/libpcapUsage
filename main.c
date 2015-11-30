@@ -19,11 +19,11 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
-  char *dev;  /* name of the device to use */ 
-  char *net;  /* dot notation of the network address */
-  char *mask; /* dot notation of the network mask    */
+  char* dev;  /* name of the device to use */ 
+  char* net;  /* dot notation of the network address */
+  char* mask; /* dot notation of the network mask    */
   int ret;    /* return code */
   char errbuf[PCAP_ERRBUF_SIZE];
   bpf_u_int32 netp;   /* ip          */
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
   dev = pcap_lookupdev(errbuf);
 
   /* error checking */
-  if(dev == NULL)
+  if(!dev)
   {
    printf("%s\n",errbuf);
    exit(1);
@@ -56,7 +56,7 @@ int main(int argc, char **argv)
   addr.s_addr = netp;
   net = inet_ntoa(addr);
 
-  if(net == NULL)/* thanks Scott :-P */
+  if(!net)/* thanks Scott :-P */
   {
     perror("inet_ntoa");
     exit(1);
@@ -68,7 +68,7 @@ int main(int argc, char **argv)
   addr.s_addr = maskp;
   mask = inet_ntoa(addr);
   
-  if(mask == NULL)
+  if(!mask)
   {
     perror("inet_ntoa");
     exit(1);
