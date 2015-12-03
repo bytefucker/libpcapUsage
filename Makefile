@@ -1,7 +1,7 @@
 # using gcc
 CC=gcc
 
-all: main singleRead captureEngine captureFilter
+all: main singleRead captureEngine captureFilter pcap
 
 main:
 	$(CC) main.c -o main -lpcap
@@ -15,6 +15,8 @@ captureEngine:
 captureFilter:
 	$(CC) captureFilter.c -o captureFilter -lpcap
 
+pcap:
+	$(CC) pcap.c -o pcap -lpcap -Wall -pedantic
 
 clean:
 	rm -rf *.o
